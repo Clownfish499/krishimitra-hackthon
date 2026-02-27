@@ -160,6 +160,7 @@
     transform: translateY(-2px);
 }
 
+<<<<<<< HEAD
 /* ===== HERO SCHEMES PANEL (right side of hero) ===== */
 .hero-schemes-panel {
     width: 360px;
@@ -307,6 +308,53 @@
 .hero-scheme-item:hover .hero-scheme-arrow {
     transform: translate(2px, -2px);
     color: #86efac;
+=======
+/* ===== HERO VISUAL & WIDGETS ===== */
+.hero-visual {
+    position: relative;
+    width: 380px;
+    height: 320px;
+    flex-shrink: 0;
+    margin-right: 40px;
+}
+
+.hero-widget {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25),
+        inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    animation: floatingWidget 6s ease-in-out infinite;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: default;
+    z-index: 5;
+}
+
+.hero-widget:hover {
+    transform: scale(1.05) translateY(-8px) rotate(1deg);
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+}
+
+.widget-icon {
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+>>>>>>> e0befcf8f06041f7ab00088382f645fed14f1412
 }
 
 .widget-weather {
@@ -465,6 +513,7 @@
         /* Move by half the track because we duplicated the items */
         transform: translateX(-50%);
     }
+<<<<<<< HEAD
 }
 
 /* ===== GOVT SCHEMES SECTION ===== */
@@ -553,6 +602,8 @@
     color: var(--green-primary);
     text-transform: uppercase;
     letter-spacing: 0.5px;
+=======
+>>>>>>> e0befcf8f06041f7ab00088382f645fed14f1412
 }
 
 /* ===== FEATURES SECTION ===== */

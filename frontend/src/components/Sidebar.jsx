@@ -1,17 +1,14 @@
 import React, { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useAuth } from '../contexts/AuthContext';
 import './Sidebar.css';
 
 export default function Sidebar({ isOpen, setIsOpen }) {
     const navigate = useNavigate();
     const location = useLocation();
     const { t, language, changeLanguage } = useLanguage();
-
-    // Close on navigation
-    useEffect(() => {
-        setIsOpen(false);
-    }, [location.pathname, setIsOpen]);
+    const [mobileOpen, setMobileOpen] = useState(false);
 
     const navItems = [
         { path: '/', icon: '🏠', label: t('nav.home') },
@@ -83,6 +80,18 @@ export default function Sidebar({ isOpen, setIsOpen }) {
                             </button>
                         ))}
                     </div>
+
+                    {user && (
+                        <div className="sidebar-user">
+                            <div className="sidebar-user-info">
+                                <span className="sidebar-user-avatar">👤</span>
+                                <span className="sidebar-user-name">{user.name || 'Farmer'}</span>
+                            </div>
+                            <button className="sidebar-logout-btn" onClick={() => { logout(); navigate('/login'); }}>
+                                🚪 Logout
+                            </button>
+                        </div>
+                    )}
                 </div>
             </aside>
         </>

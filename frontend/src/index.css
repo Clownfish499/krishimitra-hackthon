@@ -83,6 +83,11 @@ h6 {
     }
 }
 
+.app-main--full {
+    margin-left: 0 !important;
+    padding-top: 0 !important;
+}
+
 /* Page Header */
 .page-header {
     background: linear-gradient(135deg, var(--green-primary) 0%, var(--green-dark) 100%);

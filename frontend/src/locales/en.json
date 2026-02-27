@@ -6,7 +6,10 @@
         "market": "Marketplace",
         "mandi": "Mandi Rates",
         "voice": "Voice Agent",
+<<<<<<< HEAD
         "translator": "Translator",
+=======
+>>>>>>> e0befcf8f06041f7ab00088382f645fed14f1412
         "profile": "Profile"
     },
     "home": {
@@ -171,6 +174,13 @@
         "profit": "Net Profit",
         "roi": "Return on Investment"
     },
+    "voice": {
+        "title": "Voice Assistant",
+        "tapToSpeak": "Tap the mic to speak",
+        "listening": "Listening...",
+        "thinking": "Thinking...",
+        "speaking": "Speaking..."
+    },
     "common": {
         "loading": "Loading...",
         "error": "Something went wrong",
@@ -178,6 +188,7 @@
         "close": "Close",
         "save": "Save",
         "cancel": "Cancel",
+<<<<<<< HEAD
         "search": "Search",
         "learnMore": "Learn More",
         "setAlert": "Set Alert",
@@ -219,6 +230,9 @@
                 "desc": "Free soil testing and recommendation card for every farm holding."
             }
         ]
+=======
+        "search": "Search"
+>>>>>>> e0befcf8f06041f7ab00088382f645fed14f1412
     },
     "voiceAgent": {
         "title": "Voice Assistant",
@@ -227,6 +241,7 @@
         "start": "Tap to start conversation",
         "stop": "Stop conversation",
         "error": "Failed to connect to Voice AI."
+<<<<<<< HEAD
     },
     "translator": {
         "title": "Krishi Translator",
@@ -238,5 +253,8 @@
         "translating": "Translating...",
         "copy": "Copy Result",
         "history": "Recent Translations"
+=======
+>>>>>>> e0befcf8f06041f7ab00088382f645fed14f1412
     }
+}
 }

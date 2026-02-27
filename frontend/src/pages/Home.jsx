@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import './Home.css';
 
+<<<<<<< HEAD
 const GOVT_SCHEMES = [
     { icon: '🚜', title: 'PM-KISAN', desc: 'Income support of ₹6,000/year to all landholding farmer families.', link: 'https://pmkisan.gov.in/' },
     { icon: '🌾', title: 'PM Fasal Bima', desc: 'Crop insurance against non-preventable natural risks.', link: 'https://pmfby.gov.in/' },
@@ -11,6 +12,90 @@ const GOVT_SCHEMES = [
     { icon: '👴', title: 'PM-KMY', desc: 'Pension scheme for small & marginal farmers above age 60.', link: 'https://maandhan.in/' },
     { icon: '💧', title: 'PMKSY', desc: 'PM Krishi Sinchai Yojana — Water to every field.', link: 'https://pmksy.gov.in/' },
     { icon: '🧪', title: 'Soil Health Card', desc: 'Free soil testing and recommendation card for every farm.', link: 'https://soilhealth.dac.gov.in/' },
+=======
+const features = [
+    {
+        path: '/crop-recommendation',
+        icon: '🌾',
+        key: 'cropRec',
+        label: 'Crop Recommendation',
+        desc: 'AI-powered crop suggestions based on soil & season',
+        color: '#16a34a',
+        bg: 'linear-gradient(135deg, #dcfce7, #bbf7d0)',
+    },
+    {
+        path: '/fertilizer-guide',
+        icon: '🧪',
+        key: 'fertilizer',
+        label: 'Fertilizer Guide',
+        desc: 'Optimal fertilizer plans for maximum yield',
+        color: '#2563eb',
+        bg: 'linear-gradient(135deg, #dbeafe, #bfdbfe)',
+    },
+    {
+        path: '/disease-detection',
+        icon: '🔬',
+        key: 'disease',
+        label: 'Disease Detection',
+        desc: 'Identify crop diseases from photos instantly',
+        color: '#dc2626',
+        bg: 'linear-gradient(135deg, #fee2e2, #fecaca)',
+    },
+    {
+        path: '/profit-calculator',
+        icon: '💰',
+        key: 'profit',
+        label: 'Profit Calculator',
+        desc: 'Estimate returns & break-even for any crop',
+        color: '#d97706',
+        bg: 'linear-gradient(135deg, #fef3c7, #fde68a)',
+    },
+    {
+        path: '/mandi-rates',
+        icon: '📈',
+        key: 'mandi',
+        label: 'Mandi Rates',
+        desc: 'Live wholesale prices from markets across India',
+        color: '#7c3aed',
+        bg: 'linear-gradient(135deg, #ede9fe, #ddd6fe)',
+    },
+    {
+        path: '/marketplace',
+        icon: '🛒',
+        key: 'market',
+        label: 'Marketplace',
+        desc: 'Buy seeds, fertilizers & farming tools',
+        color: '#0891b2',
+        bg: 'linear-gradient(135deg, #cffafe, #a5f3fc)',
+    },
+    {
+        path: '/weather',
+        icon: '🌤️',
+        key: 'weather',
+        label: 'Weather Forecast',
+        desc: '7-day agricultural weather with smart alerts',
+        color: '#059669',
+        bg: 'linear-gradient(135deg, #d1fae5, #a7f3d0)',
+    },
+    {
+        path: '/ai',
+        icon: '🤖',
+        key: 'ai',
+        label: 'AI Assistant',
+        desc: 'Your 24/7 intelligent farming advisor',
+        color: '#9333ea',
+        bg: 'linear-gradient(135deg, #f3e8ff, #e9d5ff)',
+    },
+];
+
+const newsItems = [
+    { text: "🚜 48 farmers' bodies announced a protest outside Bathinda on March 6 demanding justice for earlier clampdowns." },
+    { text: "☀️ India braces for an unusually hot March, raising concerns over potential wheat yield risks." },
+    { text: "🌾 Wheat prices projected to fall below MSP in 2026-27 due to surplus stocks and global trends." },
+    { text: "🌱 Uttar Pradesh targets 20% increase in pulses crop area for 2025-26 to boost farmer incomes." },
+    { text: "🧪 Agriculture Minister renews efforts for Direct Benefit Transfer (DBT) of fertilizer subsidies." },
+    { text: "🏭 Maharashtra allows cooperative sugar mills to monetize by-products through private partnerships." },
+>>>>>>> e0befcf8f06041f7ab00088382f645fed14f1412
 ];
 
 export default function Home() {
@@ -54,6 +139,7 @@ export default function Home() {
                         </button>
                     </div>
                 </div>
+<<<<<<< HEAD
 
                 {/* Right: Govt Schemes Panel */}
                 <div className="hero-schemes-panel">
@@ -100,6 +186,55 @@ export default function Home() {
             </div>
 
             {/* ===== FEATURES ===== */}
+=======
+                <div className="hero-visual">
+                    <div className="hero-widget widget-weather">
+                        <div className="widget-icon">☀️</div>
+                        <div className="widget-data">
+                            <div className="hc-val">Sunny | 28°C</div>
+                            <div className="hc-lbl">Current Weather <span className="live-pulse"></span></div>
+                        </div>
+                    </div>
+                    <div className="hero-widget widget-crop">
+                        <div className="widget-icon">🌱</div>
+                        <div className="widget-data">
+                            <div className="hc-val">Safflower</div>
+                            <div className="hc-lbl">Best Recommendation</div>
+                        </div>
+                    </div>
+                    <div className="hero-widget widget-price">
+                        <div className="widget-icon">📈</div>
+                        <div className="widget-data">
+                            <div className="hc-val">Wheat (+6.59%)</div>
+                            <div className="hc-lbl">Highest Price Hike</div>
+                        </div>
+                    </div>
+                    <div className="hero-decoration-leaf">🌿</div>
+                </div>
+            </div>
+
+            {/* News Ticker Bar */}
+            <div className="news-ticker-container">
+                <div className="news-label">LATEST AGRI NEWS</div>
+                <div className="news-ticker-wrapper">
+                    <div className="news-ticker-track">
+                        {newsItems.map((news, i) => (
+                            <span className="news-item" key={i}>
+                                {news.text}
+                            </span>
+                        ))}
+                        {/* Duplicate for seamless scrolling */}
+                        {newsItems.map((news, i) => (
+                            <span className="news-item" key={`dup-${i}`}>
+                                {news.text}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            {/* Features Section */}
+>>>>>>> e0befcf8f06041f7ab00088382f645fed14f1412
             <div className="features-section">
                 <div className="features-header">
                     <h2>{t('home.features_title')}</h2>

@@ -73,11 +73,19 @@ export default function MandiRates() {
                     <table className="mandi-table">
                         <thead>
                             <tr>
+<<<<<<< HEAD
                                 <th>{t('mandi.commodity')}</th>
                                 <th>{t('mandi.market')}</th>
                                 <th>{t('mandi.modalPrice')}</th>
                                 <th>{t('mandi.variation') || 'Variation'}</th>
                                 <th>{t('mandi.alert') || 'Alert'}</th>
+=======
+                                <th>Commodity</th>
+                                <th>Market</th>
+                                <th>Modal ₹/q</th>
+                                <th>Variation</th>
+                                <th>Alert</th>
+>>>>>>> e0befcf8f06041f7ab00088382f645fed14f1412
                             </tr>
                         </thead>
                         <tbody>
