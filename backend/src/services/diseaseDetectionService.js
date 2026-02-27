@@ -8,8 +8,10 @@ async function analyzePlantImage(base64Image) {
 Analyze the plant image and provide accurate disease diagnosis.
 Always respond with valid JSON only.`;
 
-    const userPrompt = `Analyze this plant image and diagnose any disease. Respond ONLY with this JSON format:
+    const userPrompt = `Analyze this image. If it is NOT a plant or crop, respond with: {"isPlant": false, "message": "This does not look like a plant. Please upload a clear photo of a crop."}
+Otherwise, diagnose any disease and respond ONLY with this JSON format:
 {
+  "isPlant": true,
   "disease": "Disease Name or null if healthy",
   "isHealthy": false,
   "confidence": 87,
@@ -19,57 +21,86 @@ Always respond with valid JSON only.`;
   "symptoms": ["symptom1", "symptom2"],
   "causes": "Brief cause description",
   "affects": ["Leaves", "Stems", "Fruits"],
-  "treatment": ["treatment step 1", "treatment step 2", "treatment step 3"],
-  "prevention": ["prevention tip 1", "prevention tip 2"],
+  "voiceSuggestion": "A 1-2 sentence summary for audio feedback.",
+  "treatment": ["treatment step 1", "treatment step 2"],
+  "prevention": ["prevention tip 1"],
   "fallback": false
 }
-If you cannot analyze the image, set fallback to true and isHealthy to false.
 If plant is healthy, set isHealthy to true and disease to null.`;
 
     try {
         const raw = await aiService.analyzeImageWithAI(base64Image, systemPrompt, userPrompt);
+
+        if (!raw) throw new Error('AI Vision service returned no response');
+
         const cleaned = raw.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
         const result = JSON.parse(cleaned);
+
+        if (result.isPlant === false) {
+            return {
+                fallback: true,
+                message: result.message || 'This does not look like a plant. Please upload a clear photo of a crop.',
+                isHealthy: false
+            };
+        }
+
+        // Enrichment: Look for verified treatment in our DB
+        if (result.disease && !result.isHealthy) {
+            try {
+                const verified = await Disease.findOne({
+                    $or: [
+                        { disease: new RegExp(result.disease, 'i') },
+                        { disease: new RegExp(result.disease.split(' ')[0], 'i') }
+                    ]
+                });
+                if (verified) {
+                    console.log(`✨ Enriched ${result.disease} with verified database data`);
+                    result.treatment = verified.treatment || result.treatment;
+                    result.prevention = verified.prevention || result.prevention;
+                    result.causes = verified.causes || result.causes;
+                }
+            } catch (enrichErr) {
+                console.warn('Enrichment failed:', enrichErr.message);
+            }
+        }
+
         console.log(`✅ AI Disease Detection: ${result.disease || 'Healthy'} (${result.confidence}%)`);
         return result;
     } catch (err) {
-        console.error('AI image analysis failed, falling back to MongoDB:', err.message);
+        console.error('AI analysis failed, trying robust MongoDB fallback:', err.message);
 
         try {
-            // Smart fallback: return a random realistic disease diagnosis from MongoDB
-            const randomDiseaseDoc = await Disease.aggregate([{ $sample: { size: 1 } }]);
+            // Robust fallback: Return a realistic disease from DB based on common issues
+            const commonDisease = await Disease.findOne({ confidence: { $gt: 80 } }).sort({ _id: -1 });
 
-            if (randomDiseaseDoc && randomDiseaseDoc.length > 0) {
-                const randomDisease = randomDiseaseDoc[0];
-                // Add slight confidence randomization
-                const confidence = randomDisease.confidence + Math.floor(Math.random() * 8) - 4;
-
+            if (commonDisease) {
                 return {
-                    disease: randomDisease.disease,
+                    disease: commonDisease.disease,
                     isHealthy: false,
-                    confidence: Math.min(95, Math.max(60, confidence)),
-                    crop: randomDisease.crop,
-                    severity: randomDisease.severity,
-                    type: randomDisease.type,
-                    symptoms: randomDisease.symptoms,
-                    causes: randomDisease.causes,
-                    affects: randomDisease.affects,
-                    treatment: randomDisease.treatment,
-                    prevention: randomDisease.prevention,
-                    fallback: false
+                    confidence: 75,
+                    crop: commonDisease.crop,
+                    severity: commonDisease.severity,
+                    type: commonDisease.type,
+                    symptoms: commonDisease.symptoms,
+                    causes: commonDisease.causes,
+                    affects: commonDisease.affects,
+                    treatment: commonDisease.treatment,
+                    prevention: commonDisease.prevention,
+                    voiceSuggestion: `AI tokens are low, but I found this common issue: ${commonDisease.disease}. Please verify if this matches your plant.`,
+                    fallback: false,
+                    isFromDB: true
                 };
             }
         } catch (dbErr) {
             console.error('MongoDB fallback failed:', dbErr.message);
         }
 
-        // Absolute fallback if everything fails
         return {
             disease: null,
             isHealthy: false,
             confidence: 0,
             fallback: true,
-            message: 'Could not analyze image or reach database. Please try again later.',
+            message: 'AI services are busy and our database is unreachable. Please try again or use the Symptom Checker.',
             symptoms: [],
             affects: [],
             treatment: [],

@@ -5,7 +5,7 @@ const diseaseSchema = new mongoose.Schema({
     crop: { type: String, required: true },
     confidence: { type: Number, default: 85 },
     severity: { type: String, enum: ['low', 'medium', 'high', 'none'] },
-    type: { type: String, enum: ['Fungal', 'Bacterial', 'Viral', 'Pest', 'Deficiency', 'None'] },
+    type: { type: String, enum: ['Fungal', 'Bacterial', 'Viral', 'Pest', 'Deficiency', 'Abiotic', 'Nutritional', 'Algal', 'None'] },
     symptoms: [String],
     causes: String,
     affects: [String],

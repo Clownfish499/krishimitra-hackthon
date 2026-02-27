@@ -7,25 +7,37 @@ async function callAI(messages, useJSON = false) {
     const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
     const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
-    // Try OpenRouter first (Google Gemini)
+    // Try OpenRouter first
     if (OPENROUTER_API_KEY) {
-        try {
-            const response = await axios.post('https://openrouter.ai/api/v1/chat/completions', {
-                model: 'google/gemini-2.0-flash-exp:free',
-                messages,
-                temperature: 0.4,
-                response_format: useJSON ? { type: 'json_object' } : undefined
-            }, {
-                headers: {
-                    'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
-                    'Content-Type': 'application/json',
-                    'HTTP-Referer': 'http://localhost:5173',
-                    'X-Title': 'KrishiMitra AI'
-                }
-            });
-            return response.data.choices[0].message.content;
-        } catch (err) {
-            console.error('OpenRouter API request failed:', err.response?.data || err.message);
+        // Try a list of potential models in case one is unavailable
+        const models = [
+            'google/gemini-2.0-flash-001',
+            'google/gemini-flash-1.5',
+            'google/gemini-2.0-flash-exp:free', // Keeping as fallback
+            'openai/gpt-3.5-turbo'
+        ];
+
+        for (const model of models) {
+            try {
+                const response = await axios.post('https://openrouter.ai/api/v1/chat/completions', {
+                    model,
+                    messages,
+                    temperature: 0.4,
+                    response_format: useJSON ? { type: 'json_object' } : undefined
+                }, {
+                    headers: {
+                        'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+                        'Content-Type': 'application/json',
+                        'HTTP-Referer': 'http://localhost:5173',
+                        'X-Title': 'KrishiMitra AI'
+                    },
+                    timeout: 20000
+                });
+                return response.data.choices[0].message.content;
+            } catch (err) {
+                console.warn(`OpenRouter model ${model} failed:`, err.response?.data?.error?.message || err.message);
+                // Continue to next model
+            }
         }
     }
 
@@ -220,16 +232,22 @@ async function analyzeImageWithAI(base64Image, systemPrompt, userPrompt) {
     }
 
     if (OPENAI_API_KEY) {
-        const response = await axios.post('https://api.openai.com/v1/chat/completions', {
-            model: 'gpt-4-vision-preview',
-            messages,
-            max_tokens: 1000,
-            temperature: 0.3
-        }, {
-            headers: { 'Authorization': `Bearer ${OPENAI_API_KEY}`, 'Content-Type': 'application/json' }
-        });
-        return response.data.choices[0].message.content;
+        try {
+            const response = await axios.post('https://api.openai.com/v1/chat/completions', {
+                model: 'gpt-4o',
+                messages,
+                max_tokens: 1000,
+                temperature: 0.3
+            }, {
+                headers: { 'Authorization': `Bearer ${OPENAI_API_KEY}`, 'Content-Type': 'application/json' }
+            });
+            return response.data.choices[0].message.content;
+        } catch (e) {
+            console.error('OpenAI Vision failed:', e.response?.data?.error?.message || e.message);
+        }
     }
+
+    throw new Error('All AI Vision providers failed or quotas exceeded.');
 }
 
 module.exports = { chat, generateJSON, analyzeImageWithAI };

@@ -16,15 +16,18 @@ import DiseaseDetection from './pages/DiseaseDetection';
 import FertilizerGuide from './pages/FertilizerGuide';
 import ProfitCalculator from './pages/ProfitCalculator';
 import MandiRates from './pages/MandiRates';
+import Translator from './pages/Translator';
 
 function App() {
+    const [sidebarOpen, setSidebarOpen] = React.useState(false);
+
     return (
         <LanguageProvider>
             <AuthProvider>
                 <BrowserRouter>
-                    <div className="app-shell">
-                        <Sidebar />
-                        <div className="app-main">
+                    <div className={`app-shell ${sidebarOpen ? 'sidebar-open' : ''}`}>
+                        <Sidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
+                        <div className={`app-main ${sidebarOpen ? 'sidebar-open' : ''}`}>
                             <NotificationBell />
                             <Routes>
                                 <Route path="/" element={<Home />} />
@@ -37,6 +40,7 @@ function App() {
                                 <Route path="/fertilizer-guide" element={<FertilizerGuide />} />
                                 <Route path="/profit-calculator" element={<ProfitCalculator />} />
                                 <Route path="/mandi-rates" element={<MandiRates />} />
+                                <Route path="/translator" element={<Translator />} />
                                 <Route path="*" element={<Navigate to="/" replace />} />
                             </Routes>
                         </div>

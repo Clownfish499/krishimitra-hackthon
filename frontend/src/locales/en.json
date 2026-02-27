@@ -6,20 +6,45 @@
         "market": "Marketplace",
         "mandi": "Mandi Rates",
         "voice": "Voice Agent",
+        "translator": "Translator",
         "profile": "Profile"
     },
     "home": {
         "title": "KrishiMitra AI",
         "subtitle": "Your Smart Farming Assistant",
+        "hero_title": "Smart Farming",
+        "hero_sub_title": "for Every Farmer",
+        "hero_desc": "Get AI-powered crop advice, live mandi prices, weather forecasts, and disease detection — all in one platform.",
+        "ask_voice": "Ask Voice AI",
+        "ask_ai": "Ask AI Assistant",
+        "news_label": "LATEST AGRI NEWS",
+        "features_title": "Everything You Need to Farm Smarter",
+        "features_subtitle": "8 powerful tools designed for Indian farmers",
         "cropRec": "Crop Recommendation",
+        "cropRec_desc": "AI-powered crop suggestions based on soil & season",
         "calendar": "Sowing Calendar",
         "fertilizer": "Fertilizer Guide",
+        "fertilizer_desc": "Optimal fertilizer plans for maximum yield",
         "disease": "Disease Detection",
+        "disease_desc": "Identify crop diseases from photos instantly",
         "profit": "Profit Calculator",
+        "profit_desc": "Estimate returns & break-even for any crop",
         "weather": "Weather Forecast",
+        "weather_desc": "7-day agricultural weather with smart alerts",
         "mandi": "Mandi Rates",
+        "mandi_desc": "Live wholesale prices from markets across India",
         "market": "Marketplace",
-        "ai": "AI Assistant"
+        "market_desc": "Buy seeds, fertilizers & farming tools",
+        "ai": "AI Assistant",
+        "ai_desc": "Your 24/7 intelligent farming advisor",
+        "news": [
+            "🚜 48 farmers' bodies announced a protest outside Bathinda on March 6 demanding justice for earlier clampdowns.",
+            "☀️ India braces for an unusually hot March, raising concerns over potential wheat yield risks.",
+            "🌾 Wheat prices projected to fall below MSP in 2026-27 due to surplus stocks and global trends.",
+            "🌱 Uttar Pradesh targets 20% increase in pulses crop area for 2025-26 to boost farmer incomes.",
+            "🧪 Agriculture Minister renews efforts for Direct Benefit Transfer (DBT) of fertilizer subsidies.",
+            "🏭 Maharashtra allows cooperative sugar mills to monetize by-products through private partnerships."
+        ]
     },
     "ai": {
         "title": "AI Assistant",
@@ -64,9 +89,14 @@
         "market": "Market",
         "minPrice": "Min Price",
         "maxPrice": "Max Price",
-        "modalPrice": "Modal Price",
-        "setAlert": "Set Alert",
-        "fallback": "Fallback Data"
+        "modalPrice": "Modal ₹/q",
+        "variation": "Variation",
+        "alert": "Alert",
+        "setAlert": "Set Price Alert",
+        "fallback": "Fallback Data",
+        "noData": "No data found. Try different filters.",
+        "searchPlaceholder": "🌾 Search commodity...",
+        "allStates": "All States"
     },
     "profile": {
         "title": "My Profile",
@@ -120,7 +150,11 @@
         "healthy": "Your plant appears healthy!",
         "confidence": "Confidence",
         "treatment": "Treatment",
-        "prevention": "Prevention"
+        "prevention": "Prevention",
+        "plant": "plant",
+        "discuss_title": "Talk to AI Assistant about treatments?",
+        "discuss_btn": "Discuss with AI",
+        "discuss_context": "I found {{disease}} on my {{crop}}. What should I do?"
     },
     "profit": {
         "title": "Profit Calculator",
@@ -144,7 +178,47 @@
         "close": "Close",
         "save": "Save",
         "cancel": "Cancel",
-        "search": "Search"
+        "search": "Search",
+        "learnMore": "Learn More",
+        "setAlert": "Set Alert",
+        "back": "Back"
+    },
+    "govtSchemes": {
+        "title": "Latest Government Schemes",
+        "subtitle": "Financial support and welfare programs for Indian farmers",
+        "badge": "🏛️ Govt Schemes",
+        "tapHint": "Tap to visit official portal",
+        "learnMore": "Learn More ↗",
+        "schemes": [
+            {
+                "title": "PM-KISAN",
+                "desc": "Direct income support of ₹6,000/year to all landholding farmer families."
+            },
+            {
+                "title": "PM Fasal Bima Yojana",
+                "desc": "Crop insurance against all non-preventable natural risks for farmers."
+            },
+            {
+                "title": "Kisan Credit Card (KCC)",
+                "desc": "Simplified credit delivery to meet agriculture and allied activities."
+            },
+            {
+                "title": "e-NAM",
+                "desc": "National Agriculture Market for a unified online trading platform."
+            },
+            {
+                "title": "PM-KMY",
+                "desc": "Pension scheme for small & marginal farmers above age 60."
+            },
+            {
+                "title": "PMKSY",
+                "desc": "PM Krishi Sinchai Yojana — Water to every field, more crop per drop."
+            },
+            {
+                "title": "Soil Health Card",
+                "desc": "Free soil testing and recommendation card for every farm holding."
+            }
+        ]
     },
     "voiceAgent": {
         "title": "Voice Assistant",
@@ -153,6 +227,16 @@
         "start": "Tap to start conversation",
         "stop": "Stop conversation",
         "error": "Failed to connect to Voice AI."
+    },
+    "translator": {
+        "title": "Krishi Translator",
+        "desc": "Translate agricultural text between Indian languages.",
+        "placeholder": "Enter text to translate...",
+        "translate": "Translate",
+        "source": "Source Language",
+        "target": "Target Language",
+        "translating": "Translating...",
+        "copy": "Copy Result",
+        "history": "Recent Translations"
     }
-}
 }

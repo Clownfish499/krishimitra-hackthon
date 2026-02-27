@@ -1301,5 +1301,395 @@
             "Ensure crop rotation of at least 3 years with non-cruciferous crops",
             "Avoid overhead irrigation"
         ]
+    },
+    {
+        "disease": "Citrus Canker",
+        "crop": "Citrus",
+        "confidence": 92,
+        "severity": "high",
+        "type": "Bacterial",
+        "symptoms": [
+            "Raised, corky, brown spots on leaves, twigs, and fruits",
+            "Yellow halo surrounding the lesions on leaves",
+            "Premature fruit drop"
+        ],
+        "causes": "Xanthomonas citri. Spread by wind-driven rain and pruning tools.",
+        "affects": [
+            "Leaves",
+            "Branches",
+            "Fruits"
+        ],
+        "treatment": [
+            "Prune and destroy infected twigs",
+            "Spray Streptocycline @ 100 ppm + Copper Oxychloride @ 3g/L at 15-day intervals"
+        ],
+        "prevention": [
+            "Use disease-free nursery stock",
+            "Avoid pruning during rainy season",
+            "Control leaf miners (they spread the bacteria)"
+        ]
+    },
+    {
+        "disease": "Sigatoka Leaf Spot",
+        "crop": "Banana",
+        "confidence": 85,
+        "severity": "medium",
+        "type": "Fungal",
+        "symptoms": [
+            "Small yellowish-green streaks on leaves",
+            "Streaks turn into dark brown or black spots with gray centers",
+            "Leaves dry up and die prematurely"
+        ],
+        "causes": "Mycosphaerella musicola. Favored by high humidity and heavy rainfall.",
+        "affects": [
+            "Leaves"
+        ],
+        "treatment": [
+            "Spray Propiconazole @ 1ml/L or Carbendazim @ 1g/L",
+            "Remove and burn severely infected leaves"
+        ],
+        "prevention": [
+            "Ensure proper drainage",
+            "Maintain wider spacing between plants",
+            "Avoid overhead irrigation"
+        ]
+    },
+    {
+        "disease": "Coffee Leaf Rust",
+        "crop": "Coffee",
+        "confidence": 89,
+        "severity": "high",
+        "type": "Fungal",
+        "symptoms": [
+            "Yellow-orange powdery spots on the underside of leaves",
+            "Defoliation of infected branches",
+            "Dieback of twigs"
+        ],
+        "causes": "Hemileia vastatrix. Spreads by wind and rain splashes.",
+        "affects": [
+            "Leaves",
+            "Branches"
+        ],
+        "treatment": [
+            "Spray Bordeaux mixture (0.5%) twice a year (pre-monsoon and post-monsoon)",
+            "Apply Hexaconazole @ 2ml/L"
+        ],
+        "prevention": [
+            "Plant rust-resistant varieties like S.795",
+            "Regular pruning for better air circulation",
+            "Maintain optimal shade levels"
+        ]
+    },
+    {
+        "disease": "Downy Mildew",
+        "crop": "Grapes",
+        "confidence": 90,
+        "severity": "high",
+        "type": "Fungal",
+        "symptoms": [
+            "Yellowish oil spots on the upper surface of leaves",
+            "White downy growth on the underside of leaves",
+            "Berries turn brown, shrivel, and drop"
+        ],
+        "causes": "Plasmopara viticola. Thrives in cool, humid conditions.",
+        "affects": [
+            "Leaves",
+            "Branches",
+            "Fruits"
+        ],
+        "treatment": [
+            "Spray Metalaxyl + Mancozeb @ 2.5g/L",
+            "Apply Bordeaux mixture (1%)"
+        ],
+        "prevention": [
+            "Prune vines to open the canopy",
+            "Avoid excessive nitrogen",
+            "Remove fallen leaves and debris"
+        ]
+    },
+    {
+        "disease": "Bacterial Blight",
+        "crop": "Pomegranate",
+        "confidence": 93,
+        "severity": "high",
+        "type": "Bacterial",
+        "symptoms": [
+            "Small water-soaked spots on leaves",
+            "Dark brown, angular spots on fruits with L-shaped cracks",
+            "Cankers on stems leading to branch death"
+        ],
+        "causes": "Xanthomonas axonopodis pv. punicae.",
+        "affects": [
+            "Leaves",
+            "Branches",
+            "Fruits"
+        ],
+        "treatment": [
+            "Spray Streptocycline @ 500 ppm + Copper Oxychloride @ 2.5g/L",
+            "Prune and destroy infected parts"
+        ],
+        "prevention": [
+            "Use disease-free planting material",
+            "Strict sanitation in the orchard",
+            "Apply Bordeaux paste on pruned ends"
+        ]
+    },
+    {
+        "disease": "Rhizome Rot",
+        "crop": "Turmeric",
+        "confidence": 82,
+        "severity": "high",
+        "type": "Fungal",
+        "symptoms": [
+            "Yellowing of lower leaves progressing upwards",
+            "Soft rot of rhizomes with foul smell",
+            "Plant collapse at the base"
+        ],
+        "causes": "Pythium aphanidermatum. Soil-borne, favored by waterlogging.",
+        "affects": [
+            "Roots",
+            "Whole plant"
+        ],
+        "treatment": [
+            "Drench soil with Metalaxyl + Mancozeb @ 2.5g/L",
+            "Improve field drainage"
+        ],
+        "prevention": [
+            "Use healthy seed rhizomes",
+            "Rhizome treatment with fungicide before planting",
+            "Rotate crops"
+        ]
+    },
+    {
+        "disease": "Soft Rot",
+        "crop": "Ginger",
+        "confidence": 84,
+        "severity": "high",
+        "type": "Fungal",
+        "symptoms": [
+            "Yellowing of leaf margins",
+            "Pseudo-stem becomes soft and easily pulls away",
+            "Rhizomes turn watery and soft"
+        ],
+        "causes": "Pythium species. Spread through infected seed and soil.",
+        "affects": [
+            "Roots",
+            "Stems"
+        ],
+        "treatment": [
+            "Soil drenching with Copper Oxychloride @ 3g/L",
+            "Apply Trichoderma-enriched FYM"
+        ],
+        "prevention": [
+            "Select well-drained soil",
+            "Solarize soil before planting",
+            "Use healthy, treated ginger sets"
+        ]
+    },
+    {
+        "disease": "Tobacco Mosaic Virus",
+        "crop": "Tobacco",
+        "confidence": 91,
+        "severity": "medium",
+        "type": "Viral",
+        "symptoms": [
+            "Mottling or mosaic pattern of light and dark green on leaves",
+            "Stunting of the plant",
+            "Deformed leaf growth"
+        ],
+        "causes": "Highly contagious virus spread by contact, tools, and smokers.",
+        "affects": [
+            "Leaves",
+            "Whole plant"
+        ],
+        "treatment": [
+            "No chemical cure. Remove and burn infected plants.",
+            "Wash hands and tools with soap"
+        ],
+        "prevention": [
+            "Do not smoke or use tobacco near the crop",
+            "Use resistant varieties",
+            "Control weeds that may harbor the virus"
+        ]
+    },
+    {
+        "disease": "Sun-scald",
+        "crop": "General/Tomato",
+        "confidence": 80,
+        "severity": "low",
+        "type": "Abiotic",
+        "symptoms": [
+            "White or papery patches on the side of fruits facing the sun",
+            "Leathery texture on affected spots",
+            "Secondary rot may occur"
+        ],
+        "causes": "Direct exposure to intense sunlight.",
+        "affects": [
+            "Fruits"
+        ],
+        "treatment": [
+            "No chemical treatment. Protect fruits from sun.",
+            "Maintain foliage cover"
+        ],
+        "prevention": [
+            "Use shade nets in peak summer",
+            "Proper pruning to keep fruit covered by leaves",
+            "Choose varieties with good foliage"
+        ]
+    },
+    {
+        "disease": "Blossom End Rot",
+        "crop": "Tomato",
+        "confidence": 88,
+        "severity": "medium",
+        "type": "Nutritional",
+        "symptoms": [
+            "Dark, leathery sunken area at the bottom of the fruit",
+            "Affects green and ripe fruits alike"
+        ],
+        "causes": "Calcium deficiency often caused by inconsistent watering.",
+        "affects": [
+            "Fruits"
+        ],
+        "treatment": [
+            "Maintain consistent soil moisture",
+            "Foliar spray of Calcium Nitrate @ 5g/L"
+        ],
+        "prevention": [
+            "Ensure regular irrigation",
+            "Maintain proper soil pH",
+            "Mulch to retain soil moisture"
+        ]
+    },
+    {
+        "disease": "Common Smut",
+        "crop": "Maize",
+        "confidence": 86,
+        "severity": "medium",
+        "type": "Fungal",
+        "symptoms": [
+            "Large, fleshy galls (swelling) on ears, tassels, or stalks",
+            "Galls turn black and powdery when mature",
+            "Stunted ears"
+        ],
+        "causes": "Ustilago maydis. Overwinters in soil and crop debris.",
+        "affects": [
+            "Whole plant",
+            "Fruits"
+        ],
+        "treatment": [
+            "Remove and destroy galls before they release spores",
+            "Seed treatment with Carboxin"
+        ],
+        "prevention": [
+            "Balanced fertilization (avoid excess nitrogen)",
+            "Practice crop rotation",
+            "Avoid wounding plants during cultivation"
+        ]
+    },
+    {
+        "disease": "Soybean Rust",
+        "crop": "Soybean",
+        "confidence": 83,
+        "severity": "high",
+        "type": "Fungal",
+        "symptoms": [
+            "Small, tan or reddish-brown lesions on the underside of old leaves",
+            "Premature defoliation",
+            "Reduced seed size and number"
+        ],
+        "causes": "Phakopsora pachyrhizi. Spreads rapidly by wind.",
+        "affects": [
+            "Leaves"
+        ],
+        "treatment": [
+            "Spray Triazoles or Strobilurins fungicides",
+            "Early application is critical"
+        ],
+        "prevention": [
+            "Early sowing to escape the disease",
+            "Monitor crop regularly during humid weather",
+            "Use tolerant varieties"
+        ]
+    },
+    {
+        "disease": "Quick Wilt",
+        "crop": "Black Pepper",
+        "confidence": 85,
+        "severity": "high",
+        "type": "Fungal",
+        "symptoms": [
+            "Sudden yellowing and wilting of the whole vine",
+            "Decay of the root system and foot rot",
+            "Leaf and fruit drop"
+        ],
+        "causes": "Phytophthora capsici. Prevalent during heavy monsoon.",
+        "affects": [
+            "Roots",
+            "Stems",
+            "Leaves"
+        ],
+        "treatment": [
+            "Spray with Bordeaux mixture (1%)",
+            "Soil drenching with Copper Oxychloride @ 2g/L"
+        ],
+        "prevention": [
+            "Ensure excellent drainage",
+            "Select healthy, disease-free cuttings",
+            "Soil solarization"
+        ]
+    },
+    {
+        "disease": "Capsule Rot (Azhukal Disease)",
+        "crop": "Cardamom",
+        "confidence": 79,
+        "severity": "high",
+        "type": "Fungal",
+        "symptoms": [
+            "Water-soaked lesions on capsules that turn dark brown and rot",
+            "Rotting of leaves and shoots",
+            "Foul smell from decaying capsules"
+        ],
+        "causes": "Phytophthora meadii. Favored by high rainfall and humidity.",
+        "affects": [
+            "Fruits",
+            "Leaves",
+            "Stems"
+        ],
+        "treatment": [
+            "Spray Bordeaux mixture (1%) before monsoon",
+            "Collect and destroy infected capsules"
+        ],
+        "prevention": [
+            "Thin out overcrowded plants for better light",
+            "Proper weeding and orchard sanitation",
+            "Ensure good soil drainage"
+        ]
+    },
+    {
+        "disease": "Red Rust",
+        "crop": "Tea",
+        "confidence": 75,
+        "severity": "low",
+        "type": "Algal",
+        "symptoms": [
+            "Orange-red rusty spots on the upper surface of leaves",
+            "Cracking of bark in severe cases",
+            "Stunted growth of young shoots"
+        ],
+        "causes": "Cephaleuros virescens (an alga). Thrives in poorly drained, low-vigor bushes.",
+        "affects": [
+            "Leaves",
+            "Bark"
+        ],
+        "treatment": [
+            "Spray Copper-based fungicides",
+            "Improve soil fertility with potash"
+        ],
+        "prevention": [
+            "Improve soil drainage",
+            "Balanced manuring",
+            "Proper shade management"
+        ]
     }
 ]

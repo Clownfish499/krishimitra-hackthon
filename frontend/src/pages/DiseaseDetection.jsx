@@ -4,9 +4,13 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { diseaseAPI, cropsAPI } from '../services/api';
 import './DiseaseDetection.css';
 
-// const cropList = ['Tomato', 'Rice', 'Wheat', 'Cotton', 'Potato', 'Onion', 'Maize', 'Sugarcane', 'Groundnut', 'Chilli'];
-const symptomList = ['Yellow leaves', 'Brown spots', 'White powder', 'Wilting', 'Leaf curl', 'Black spots', 'Holes in leaves', 'Stem rot', 'Root rot', 'Stunted growth'];
-const partList = ['Leaves', 'Stem', 'Roots', 'Fruits', 'Flowers', 'Whole plant'];
+const symptomList = [
+    'Yellow leaves', 'Brown spots', 'White powder', 'Wilting', 'Leaf curl',
+    'Black spots', 'Holes in leaves', 'Stem rot', 'Root rot', 'Stunted growth',
+    'Drying leaves', 'Sticky residue', 'Moldy growth', 'Fruit rot', 'Deformed fruit',
+    'Yellow veins', 'Mosaic pattern', 'Early leaf drop', 'Premature ripening', 'Webbing on leaves'
+];
+const partList = ['Leaves', 'Stem', 'Roots', 'Fruits', 'Flowers', 'Whole plant', 'Buds', 'Bark', 'Seeds', 'Branches'];
 
 export default function DiseaseDetection() {
     const navigate = useNavigate();
@@ -17,6 +21,7 @@ export default function DiseaseDetection() {
     const [preview, setPreview] = useState(null);
     const [result, setResult] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [isSpeaking, setIsSpeaking] = useState(false);
     const [symptomForm, setSymptomForm] = useState({ crop: '', symptoms: [], affectedPart: '' });
 
     React.useEffect(() => {
@@ -24,6 +29,16 @@ export default function DiseaseDetection() {
             if (res.data.success) setDbCrops(res.data.crops);
         }).catch(e => console.error(e));
     }, []);
+
+    const speak = (text) => {
+        if (!text) return;
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = language === 'hi' ? 'hi-IN' : language === 'kn' ? 'kn-IN' : 'en-IN';
+        utterance.onstart = () => setIsSpeaking(true);
+        utterance.onend = () => setIsSpeaking(false);
+        window.speechSynthesis.speak(utterance);
+    };
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -42,6 +57,7 @@ export default function DiseaseDetection() {
             fd.append('image', image);
             const res = await diseaseAPI.identify(fd);
             setResult(res.data);
+            if (res.data.voiceSuggestion) speak(res.data.voiceSuggestion);
         } catch (e) {
             setResult({ fallback: true, message: 'Analysis failed. Please try symptom checker.' });
         } finally { setLoading(false); }
@@ -53,6 +69,7 @@ export default function DiseaseDetection() {
         try {
             const res = await diseaseAPI.analyzeSymptoms(symptomForm);
             setResult(res.data);
+            if (res.data.voiceSuggestion) speak(res.data.voiceSuggestion);
         } catch (e) {
             setResult({ fallback: true, message: 'Analysis failed.' });
         } finally { setLoading(false); }
@@ -132,12 +149,30 @@ export default function DiseaseDetection() {
                         <>
                             <div className="disease-header">
                                 <h3>{result.disease || 'Unknown Disease'}</h3>
-                                <span className="severity-badge" style={{ background: `${severityColor[result.severity || 'medium']}22`, color: severityColor[result.severity || 'medium'] }}>{result.severity?.toUpperCase()}</span>
+                                <div className="action-row">
+                                    <button className={`icon-btn ${isSpeaking ? 'active' : ''}`} onClick={() => speak(result.voiceSuggestion)}>🔊</button>
+                                    <span className="severity-badge" style={{ background: `${severityColor[result.severity || 'medium']}22`, color: severityColor[result.severity || 'medium'] }}>{result.severity?.toUpperCase()}</span>
+                                </div>
                             </div>
+
                             <div className="confidence-bar">
                                 <div className="confidence-fill" style={{ width: `${result.confidence || 0}%`, background: result.confidence > 70 ? '#4caf50' : '#ff8f00' }}></div>
                             </div>
                             <div className="confidence-label">{t('disease.confidence')}: {result.confidence}% ({result.type})</div>
+
+                            <div className="ai-discuss-banner">
+                                <p>{t('disease.discuss_title')}</p>
+                                <button className="discuss-btn" onClick={() => {
+                                    const contextPattern = t('disease.discuss_context');
+                                    const finalContext = contextPattern
+                                        .replace('{{disease}}', result.disease)
+                                        .replace('{{crop}}', result.crop || t('disease.plant'));
+                                    navigate(`/ai?mode=voice&context=${encodeURIComponent(finalContext)}`);
+                                }}>
+                                    💬 {t('disease.discuss_btn')}
+                                </button>
+                            </div>
+
                             {result.treatment?.length > 0 && (
                                 <div className="result-section">
                                     <h4>💊 {t('disease.treatment')}</h4>

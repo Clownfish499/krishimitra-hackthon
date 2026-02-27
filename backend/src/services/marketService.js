@@ -38,15 +38,15 @@ async function getMandiRates({ state, district, commodity, limit = 50 }) {
             const records = response.data.records;
 
             return records.map(r => ({
-                state: r.State,
-                district: r.District,
-                market: r.Market,
-                commodity: r.Commodity,
-                variety: r.Variety,
-                minPrice: parseInt(r.Min_x0020_Price),
-                maxPrice: parseInt(r.Max_x0020_Price),
-                modalPrice: parseInt(r.Modal_x0020_Price),
-                date: r.Arrival_Date,
+                state: r.state,
+                district: r.district,
+                market: r.market,
+                commodity: r.commodity,
+                variety: r.variety,
+                minPrice: parseInt(r.min_price),
+                maxPrice: parseInt(r.max_price),
+                modalPrice: parseInt(r.modal_price),
+                date: r.arrival_date,
                 variation: (Math.random() * 8 - 4).toFixed(1) // Simulated variation for API data
             }));
         } catch (err) {

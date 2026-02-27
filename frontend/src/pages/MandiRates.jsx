@@ -60,12 +60,12 @@ export default function MandiRates() {
             <div className="mandi-filters card">
                 <div className="filter-row">
                     <select value={filters.state} onChange={e => setFilters(f => ({ ...f, state: e.target.value }))}>
-                        <option value="">All States</option>
+                        <option value="">{t('mandi.allStates') || 'All States'}</option>
                         {states.map(s => <option key={s} value={s}>{s}</option>)}
                     </select>
-                    <input type="text" placeholder="District" value={filters.district} onChange={e => setFilters(f => ({ ...f, district: e.target.value }))} />
+                    <input type="text" placeholder={t('districts') || 'District'} value={filters.district} onChange={e => setFilters(f => ({ ...f, district: e.target.value }))} />
                 </div>
-                <input type="text" placeholder="🌾 Search commodity..." value={filters.commodity} onChange={e => setFilters(f => ({ ...f, commodity: e.target.value }))} style={{ marginTop: 8 }} />
+                <input type="text" placeholder={t('mandi.searchPlaceholder') || '🌾 Search commodity...'} value={filters.commodity} onChange={e => setFilters(f => ({ ...f, commodity: e.target.value }))} style={{ marginTop: 8 }} />
             </div>
 
             {loading ? <div className="spinner" /> : (
@@ -73,11 +73,11 @@ export default function MandiRates() {
                     <table className="mandi-table">
                         <thead>
                             <tr>
-                                <th>Commodity</th>
-                                <th>Market</th>
-                                <th>Modal ₹/q</th>
-                                <th>Variation</th>
-                                <th>Alert</th>
+                                <th>{t('mandi.commodity')}</th>
+                                <th>{t('mandi.market')}</th>
+                                <th>{t('mandi.modalPrice')}</th>
+                                <th>{t('mandi.variation') || 'Variation'}</th>
+                                <th>{t('mandi.alert') || 'Alert'}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -103,7 +103,7 @@ export default function MandiRates() {
                             ))}
                         </tbody>
                     </table>
-                    {rates.length === 0 && <div className="empty-state">No data found. Try different filters.</div>}
+                    {rates.length === 0 && <div className="empty-state">{t('mandi.noData') || 'No data found. Try different filters.'}</div>}
                 </div>
             )}
 
@@ -111,9 +111,9 @@ export default function MandiRates() {
                 <div className="modal-overlay" onClick={() => setAlertModal(null)}>
                     <div className="alert-modal" onClick={e => e.stopPropagation()}>
                         <button className="modal-close" onClick={() => setAlertModal(null)}>✕</button>
-                        <h3>🔔 Set Price Alert</h3>
-                        <p className="alert-modal-sub">Commodity: <strong>{alertModal.commodity}</strong> in {alertModal.market}</p>
-                        <p className="alert-current">Current price: <strong>₹{alertModal.modalPrice}/quintal</strong></p>
+                        <h3>🔔 {t('mandi.setAlert')}</h3>
+                        <p className="alert-modal-sub">{t('mandi.commodity')}: <strong>{alertModal.commodity}</strong> in {alertModal.market}</p>
+                        <p className="alert-current">{t('market.price') || 'Current price'}: <strong>₹{alertModal.modalPrice}/quintal</strong></p>
                         <div className="form-group">
                             <label>Notify me when price goes</label>
                             <div style={{ display: 'flex', gap: 8 }}>

@@ -1,0 +1,153 @@
+.translator-page {
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.translator-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.lang-selectors {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.selector-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.selector-group label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #6b7280;
+}
+
+.selector-group select {
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #e5e7eb;
+    background: #f9fafb;
+    font-weight: 500;
+    min-width: 180px;
+}
+
+.swap-icon {
+    font-size: 1.5rem;
+    color: #9ca3af;
+    margin-top: 1.25rem;
+}
+
+.translation-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.text-area-box,
+.result-area-box {
+    background: white;
+    border-radius: 1rem;
+    border: 1px solid #e5e7eb;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-height: 250px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+textarea {
+    flex: 1;
+    border: none;
+    resize: none;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: #1f2937;
+    outline: none;
+}
+
+.translate-action-btn {
+    align-self: flex-end;
+    padding: 0.75rem 2rem;
+    background: var(--primary-color, #16a34a);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.translate-action-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.result-display {
+    flex: 1;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: #6b7280;
+}
+
+.has-content .result-display {
+    color: #059669;
+    font-weight: 500;
+}
+
+.copy-btn {
+    align-self: flex-end;
+    padding: 0.5rem 1rem;
+    background: #f3f4f6;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    cursor: pointer;
+}
+
+.translation-history {
+    margin-top: 2rem;
+}
+
+.history-item {
+    background: white;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.h-source {
+    color: #6b7280;
+}
+
+.h-target {
+    color: #111827;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .translation-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .lang-selectors {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}

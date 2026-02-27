@@ -115,14 +115,35 @@
 
 .disease-header {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     margin-bottom: 10px;
+    gap: 8px;
 }
 
-.disease-header h3 {
-    font-size: 1.1rem;
-    font-weight: 800;
+.action-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon-btn {
+    background: #e8f5e9;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.icon-btn.active {
+    background: #4caf50;
+    color: white;
+    animation: pulse-small 1s infinite;
 }
 
 .severity-badge {
@@ -149,7 +170,39 @@
 .confidence-label {
     font-size: 0.8rem;
     color: #555;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
+}
+
+.ai-discuss-banner {
+    background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+    padding: 14px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    border: 1px solid #c8e6c9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+}
+
+.ai-discuss-banner p {
+    font-size: 0.88rem;
+    color: #2d7a3a;
+    font-weight: 600;
+    margin: 0;
+}
+
+.discuss-btn {
+    background: #16a34a;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .result-section {

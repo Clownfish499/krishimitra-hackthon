@@ -1,17 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import './Sidebar.css';
 
-export default function Sidebar() {
+export default function Sidebar({ isOpen, setIsOpen }) {
     const navigate = useNavigate();
     const location = useLocation();
     const { t, language, changeLanguage } = useLanguage();
-    const [mobileOpen, setMobileOpen] = useState(false);
+
+    // Close on navigation
+    useEffect(() => {
+        setIsOpen(false);
+    }, [location.pathname, setIsOpen]);
 
     const navItems = [
         { path: '/', icon: '🏠', label: t('nav.home') },
         { path: '/ai', icon: '🤖', label: t('nav.ai') },
+        { path: '/translator', icon: '🌍', label: t('nav.translator') || 'Translator' },
         { path: '/weather', icon: '🌤️', label: t('nav.weather') },
         { path: '/mandi-rates', icon: '📈', label: t('nav.mandi') || 'Mandi Rates' },
         { path: '/marketplace', icon: '🛒', label: t('nav.market') },
@@ -22,29 +27,27 @@ export default function Sidebar() {
         { path: '/profile', icon: '👤', label: t('nav.profile') },
     ];
 
-    const handleNav = (path) => {
-        navigate(path);
-        setMobileOpen(false);
-    };
-
     return (
         <>
-            {/* Mobile top bar */}
-            <header className="mobile-topbar">
-                <div className="mobile-brand">🌱 KrishiMitra AI</div>
-                <button className="hamburger" onClick={() => setMobileOpen(!mobileOpen)}>
-                    {mobileOpen ? '✕' : '☰'}
-                </button>
-            </header>
+            {/* Global Hamburger Icon */}
+            <button
+                className={`menu-toggle ${isOpen ? 'active' : ''}`}
+                onClick={() => setIsOpen(!isOpen)}
+                aria-label="Toggle Menu"
+            >
+                <div className="hamburger-box">
+                    <div className="hamburger-inner"></div>
+                </div>
+            </button>
 
-            {/* Overlay for mobile */}
-            {mobileOpen && <div className="sidebar-overlay" onClick={() => setMobileOpen(false)} />}
+            {/* Overlay */}
+            <div className={`sidebar-overlay ${isOpen ? 'show' : ''}`} onClick={() => setIsOpen(false)} />
 
             {/* Sidebar */}
-            <aside className={`sidebar ${mobileOpen ? 'open' : ''}`}>
-                <div className="sidebar-brand" onClick={() => handleNav('/')}>
-                    <span className="brand-icon">🌱</span>
-                    <div>
+            <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
+                <div className="sidebar-brand" onClick={() => navigate('/')}>
+                    <div className="brand-logo">🌱</div>
+                    <div className="brand-info">
                         <div className="brand-name">KrishiMitra AI</div>
                         <div className="brand-sub">Smart Farming Platform</div>
                     </div>
@@ -55,16 +58,16 @@ export default function Sidebar() {
                         <button
                             key={item.path}
                             className={`sidebar-link ${location.pathname === item.path ? 'active' : ''}`}
-                            onClick={() => handleNav(item.path)}
+                            onClick={() => navigate(item.path)}
                         >
                             <span className="sidebar-icon">{item.icon}</span>
                             <span className="sidebar-label">{item.label}</span>
+                            {location.pathname === item.path && <div className="active-dot" />}
                         </button>
                     ))}
                 </nav>
 
                 <div className="sidebar-footer">
-                    <div className="lang-label">Language</div>
                     <div className="lang-switcher">
                         {[
                             { code: 'en', label: 'EN' },
