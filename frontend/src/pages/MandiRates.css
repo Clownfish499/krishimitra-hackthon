@@ -86,10 +86,22 @@
 }
 
 .modal-price {
+    font-size: 1.1rem;
     font-weight: 800;
-    color: #2d7a3a;
+    color: #1a4d22;
+}
+
+.variation-cell {
+    font-weight: 700;
     font-size: 0.95rem;
-    white-space: nowrap;
+}
+
+.price-up {
+    color: #16a34a;
+}
+
+.price-down {
+    color: #dc2626;
 }
 
 .alert-btn {

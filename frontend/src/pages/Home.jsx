@@ -78,11 +78,13 @@ const features = [
     },
 ];
 
-const stats = [
-    { icon: '👨‍🌾', value: '2M+', label: 'Farmers Helped' },
-    { icon: '🌾', value: '150+', label: 'Crops Supported' },
-    { icon: '📍', value: '500+', label: 'Mandi Markets' },
-    { icon: '🏆', value: '98%', label: 'Accuracy Rate' },
+const newsItems = [
+    { text: "🚜 48 farmers' bodies announced a protest outside Bathinda on March 6 demanding justice for earlier clampdowns." },
+    { text: "☀️ India braces for an unusually hot March, raising concerns over potential wheat yield risks." },
+    { text: "🌾 Wheat prices projected to fall below MSP in 2026-27 due to surplus stocks and global trends." },
+    { text: "🌱 Uttar Pradesh targets 20% increase in pulses crop area for 2025-26 to boost farmer incomes." },
+    { text: "🧪 Agriculture Minister renews efforts for Direct Benefit Transfer (DBT) of fertilizer subsidies." },
+    { text: "🏭 Maharashtra allows cooperative sugar mills to monetize by-products through private partnerships." },
 ];
 
 export default function Home() {
@@ -113,40 +115,49 @@ export default function Home() {
                     </div>
                 </div>
                 <div className="hero-visual">
-                    <div className="hero-card-float card-1">
-                        <span>🌡️</span>
-                        <div>
-                            <div className="hc-val">28°C</div>
-                            <div className="hc-lbl">Today's Temp</div>
+                    <div className="hero-widget widget-weather">
+                        <div className="widget-icon">☀️</div>
+                        <div className="widget-data">
+                            <div className="hc-val">Sunny | 28°C</div>
+                            <div className="hc-lbl">Current Weather <span className="live-pulse"></span></div>
                         </div>
                     </div>
-                    <div className="hero-card-float card-2">
-                        <span>📈</span>
-                        <div>
-                            <div className="hc-val">₹2,400</div>
-                            <div className="hc-lbl">Wheat/Qtl</div>
+                    <div className="hero-widget widget-crop">
+                        <div className="widget-icon">🌱</div>
+                        <div className="widget-data">
+                            <div className="hc-val">Safflower</div>
+                            <div className="hc-lbl">Best Recommendation</div>
                         </div>
                     </div>
-                    <div className="hero-card-float card-3">
-                        <span>✅</span>
-                        <div>
-                            <div className="hc-val">Paddy</div>
-                            <div className="hc-lbl">Best crop now</div>
+                    <div className="hero-widget widget-price">
+                        <div className="widget-icon">📈</div>
+                        <div className="widget-data">
+                            <div className="hc-val">Wheat (+6.59%)</div>
+                            <div className="hc-lbl">Highest Price Hike</div>
                         </div>
                     </div>
-                    <div className="hero-emoji-bg">🌿</div>
+                    <div className="hero-decoration-leaf">🌿</div>
                 </div>
             </div>
 
-            {/* Stats Bar */}
-            <div className="stats-bar">
-                {stats.map((s, i) => (
-                    <div className="stat-item" key={i}>
-                        <span className="stat-icon">{s.icon}</span>
-                        <div className="stat-value">{s.value}</div>
-                        <div className="stat-label">{s.label}</div>
+            {/* News Ticker Bar */}
+            <div className="news-ticker-container">
+                <div className="news-label">LATEST AGRI NEWS</div>
+                <div className="news-ticker-wrapper">
+                    <div className="news-ticker-track">
+                        {newsItems.map((news, i) => (
+                            <span className="news-item" key={i}>
+                                {news.text}
+                            </span>
+                        ))}
+                        {/* Duplicate for seamless scrolling */}
+                        {newsItems.map((news, i) => (
+                            <span className="news-item" key={`dup-${i}`}>
+                                {news.text}
+                            </span>
+                        ))}
                     </div>
-                ))}
+                </div>
             </div>
 
             {/* Features Section */}

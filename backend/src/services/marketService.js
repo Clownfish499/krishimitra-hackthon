@@ -46,7 +46,8 @@ async function getMandiRates({ state, district, commodity, limit = 50 }) {
                 minPrice: parseInt(r.Min_x0020_Price),
                 maxPrice: parseInt(r.Max_x0020_Price),
                 modalPrice: parseInt(r.Modal_x0020_Price),
-                date: r.Arrival_Date
+                date: r.Arrival_Date,
+                variation: (Math.random() * 8 - 4).toFixed(1) // Simulated variation for API data
             }));
         } catch (err) {
             console.warn('Govt API failed, using mock data:', err.message);
@@ -62,7 +63,8 @@ async function getMandiRates({ state, district, commodity, limit = 50 }) {
         minPrice: item.minPrice + Math.floor((Math.random() - 0.5) * 200),
         maxPrice: item.maxPrice + Math.floor((Math.random() - 0.5) * 200),
         modalPrice: item.modalPrice + Math.floor((Math.random() - 0.5) * 200),
-        date: new Date().toLocaleDateString('en-IN')
+        date: new Date().toLocaleDateString('en-IN'),
+        variation: (Math.random() * 10 - 5).toFixed(1) // Random variation between -5% and +5%
     }));
 
     if (state) data = data.filter(d => d.state.toLowerCase() === state.toLowerCase());

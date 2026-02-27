@@ -5,6 +5,7 @@
         "weather": "Weather",
         "market": "Marketplace",
         "mandi": "Mandi Rates",
+        "voice": "Voice Agent",
         "profile": "Profile"
     },
     "home": {
@@ -144,5 +145,14 @@
         "save": "Save",
         "cancel": "Cancel",
         "search": "Search"
+    },
+    "voiceAgent": {
+        "title": "Voice Assistant",
+        "listening": "Listening...",
+        "speaking": "AI Speaking...",
+        "start": "Tap to start conversation",
+        "stop": "Stop conversation",
+        "error": "Failed to connect to Voice AI."
     }
+}
 }

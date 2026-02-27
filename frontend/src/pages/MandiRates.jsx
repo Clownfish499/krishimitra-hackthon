@@ -76,6 +76,7 @@ export default function MandiRates() {
                                 <th>Commodity</th>
                                 <th>Market</th>
                                 <th>Modal ₹/q</th>
+                                <th>Variation</th>
                                 <th>Alert</th>
                             </tr>
                         </thead>
@@ -92,6 +93,9 @@ export default function MandiRates() {
                                         <div className="mandi-sub">{row.district}</div>
                                     </td>
                                     <td className="modal-price">₹{row.modalPrice}</td>
+                                    <td className={`variation-cell ${row.variation >= 0 ? 'price-up' : 'price-down'}`}>
+                                        {row.variation >= 0 ? '↑' : '↓'} {Math.abs(row.variation)}%
+                                    </td>
                                     <td>
                                         <button className="alert-btn" onClick={() => setAlertModal(row)} title="Set Price Alert">🔔</button>
                                     </td>
